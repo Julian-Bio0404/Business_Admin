@@ -13,9 +13,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = environ.Path(__file__) - 3
+BASE_DIR = environ.Path(__file__) - 2
 APPS_DIR = BASE_DIR.path('app')
 
+# Enviroments
+env = environ.Env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
