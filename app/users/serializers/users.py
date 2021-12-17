@@ -16,6 +16,10 @@ from rest_framework.validators import UniqueValidator
 # Models
 from app.users.models import User
 
+# Taskapp
+from taskapp.tasks.users import (send_confirmation_email,
+                                 send_restore_password_email)
+
 
 class UserModelSerializer(serializers.ModelSerializer):
     """User model serializer."""
@@ -78,6 +82,7 @@ class UserSignUpSerializer(serializers.Serializer):
         """Handle user and profile creation"""
         data.pop('password_confirmation')
         user = User.objects.create_user(**data)
+        send_confirmation_email.delay(user_pk=user.pk)
         return user
 
 
@@ -146,6 +151,7 @@ class TokenRestorePasswordSerializer(serializers.Serializer):
             user = User.objects.get(email=data)
         except User.DoesNotExist:
             raise serializers.ValidationError('User does not exist.')
+        send_restore_password_email.delay(user_pk=user.pk)
         return user
 
 
