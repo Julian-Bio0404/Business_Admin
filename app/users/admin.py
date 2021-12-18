@@ -9,7 +9,7 @@ from app.users.models import User
 
 
 @admin.register(User)
-class CustomUserAdmin(UserAdmin):
+class CustomUserAdmin(admin.ModelAdmin):
     """User model admin."""
 
     list_display = [
