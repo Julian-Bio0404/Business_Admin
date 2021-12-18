@@ -14,6 +14,10 @@ class User(AppModel, AbstractUser):
     Extend from Django's Abstract User and add some extra fields.
     """
 
+    company = models.ForeignKey(
+        'companies.Company', on_delete=models.CASCADE,
+        help_text='company to which the user belongs')
+
     verified = models.BooleanField(
         default=False, help_text='Set to true when the user have verified its email add')
 

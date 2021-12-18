@@ -23,6 +23,8 @@ from taskapp.tasks.users import (send_confirmation_email,
 
 class UserModelSerializer(serializers.ModelSerializer):
     """User model serializer."""
+    
+    company = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         """Meta options."""
@@ -30,13 +32,14 @@ class UserModelSerializer(serializers.ModelSerializer):
         fields = [
             'username', 'first_name',
             'last_name', 'email',
-            'phone_number', 'verified'
+            'phone_number', 'verified',
+            'company'
         ]
 
         read_only_fields = [
             'username', 'first_name',
             'last_name', 'email',
-            'verified'
+            'verified', 'company'
         ]
 
 
