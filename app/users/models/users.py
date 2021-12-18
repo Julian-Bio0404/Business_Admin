@@ -15,8 +15,8 @@ class User(AppModel, AbstractUser):
     """
 
     company = models.ForeignKey(
-        'companies.Company', on_delete=models.CASCADE,
-        help_text='company to which the user belongs')
+        'companies.Company', on_delete=models.SET_NULL,
+        null=True, help_text='company to which the user belongs')
 
     verified = models.BooleanField(
         default=False, help_text='Set to true when the user have verified its email add')

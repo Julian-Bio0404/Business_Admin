@@ -34,6 +34,7 @@ class AccessHour(BaseAppModel):
     access_point = models.ForeignKey('companies.AccessPoint', on_delete=models.CASCADE)
     start = models.TimeField(help_text='Start time')
     finish = models.TimeField(help_text='Finish time')
+    active = models.BooleanField(default=False)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
 
     def __str__(self):
