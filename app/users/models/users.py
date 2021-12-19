@@ -27,7 +27,7 @@ class User(AppModel, AbstractUser):
 
     def __str__(self):
         """Return username."""
-        return self.username
+        return f'{self.first_name} {self.last_name}'
 
     def get_short_name(self):
         """Return username."""
