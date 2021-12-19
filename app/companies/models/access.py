@@ -17,7 +17,7 @@ class AccessPoint(AppModel):
     company = models.ForeignKey(
         'companies.Company', on_delete=models.CASCADE, help_text='company to which the user belongs')
 
-    geolocation = models.CharField(max_length=15)
+    geolocation = models.CharField(max_length=30)
     active = models.BooleanField(default=False)
 
     def __str__(self):

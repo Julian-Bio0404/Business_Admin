@@ -1,11 +1,15 @@
 """Access serializers."""
 
 # Django REST Framework
+from django.core.validators import RegexValidator
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
 # Models
 from app.companies.models import AccessHour, AccessPoint, Employee
+
+# Utils
+from app.utils.services import api_maps
 
 
 class AccessPointModelSerializer(serializers.ModelSerializer):
@@ -17,7 +21,7 @@ class AccessPointModelSerializer(serializers.ModelSerializer):
         """Meta options."""
         model = AccessPoint
         fields = [
-            'name', 'company'
+            'name', 'company',
             'geolocation', 'active',
             'email', 'phone_number',
             'direction', 'country',
@@ -25,8 +29,27 @@ class AccessPointModelSerializer(serializers.ModelSerializer):
         ]
 
         read_only_fields = [
-            'company', 'geolocation'
+            'company', 'country',
+            'state', 'city'
         ]
+    
+    def update(self, instance, validated_data):
+        """
+        Update access point, if geolocation needs to be
+        updated, country, state and city will also be updated.
+        """
+        geolocation = validated_data.get('geolocation', None)
+        if geolocation:
+            geolocation = api_maps(validated_data['geolocation'])
+            if geolocation:
+                country = geolocation['country']
+                state = geolocation['state']
+                city = geolocation['city']
+
+                instance.country = country
+                instance.state = state
+                instance.city = city
+        return super().update(instance, validated_data)
 
 
 class CreateAccessPointSerializer(serializers.Serializer):
@@ -36,23 +59,30 @@ class CreateAccessPointSerializer(serializers.Serializer):
     
     email = serializers.EmailField(
         validators=[UniqueValidator(queryset=AccessPoint.objects.all())])
-    
-    direction = serializers.CharField(min_length=6, max_length=25)
-    country = serializers.CharField(min_length=4, max_length=100)
-    state = serializers.CharField(min_length=4, max_length=100)
-    city = serializers.CharField(min_length=4, max_length=100)
 
+    # Geolocation validation
+    geo_regex = RegexValidator(
+        regex=r"^(-?\d+(\.\d+)?),*(-?\d+(\.\d+)?)$",
+        message='Geolocation must be entered in the format: lat,lon')
+
+    geolocation = serializers.CharField(
+        validators=[geo_regex], min_length=6, max_length=30)
+
+    direction = serializers.CharField(min_length=6, max_length=25)
     active = serializers.BooleanField(required=False)
 
     def create(self, data):
         """Handle access point creation."""
-
-        # No olvidar implementar geolocalización a partir de city
-        # o direction, ya que este campo es requerido
-
+        geolocation = api_maps(data['geolocation'])
+        if geolocation:
+            country = geolocation['country']
+            state = geolocation['state']
+            city = geolocation['city']
         company = self.context['company']
-        return AccessPoint.objects.create(**data, company=company)
-    
+        access_point = AccessPoint.objects.create(
+            **data, company=company,
+            country=country, state=state, city=city)
+        return access_point
 
 
 class AccessHourModelSerializer(serializers.ModelSerializer):
