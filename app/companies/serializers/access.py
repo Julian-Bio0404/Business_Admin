@@ -7,6 +7,7 @@ from rest_framework.validators import UniqueValidator
 
 # Models
 from app.companies.models import AccessHour, AccessPoint, Employee
+from app.users.models.users import User
 
 # Utils
 from app.utils.services import api_maps
@@ -89,16 +90,17 @@ class AccessHourModelSerializer(serializers.ModelSerializer):
     """Access Hour model serializer."""
 
     access_point = serializers.StringRelatedField(read_only=True)
+    user = serializers.StringRelatedField(read_only=True)
 
     class Meta:
         """Meta options."""
         model = AccessHour
         fields = [
-            'access_point', 'start'
+            'access_point', 'start',
             'finish', 'user', 'active'
         ]
 
-        read_only_fields = ['access_point']
+        read_only_fields = ['access_point', 'user']
 
 
 class CreateAccessHourSerializer(serializers.Serializer):
@@ -108,7 +110,7 @@ class CreateAccessHourSerializer(serializers.Serializer):
     start = serializers.TimeField()
     finish = serializers.TimeField()
     active = serializers.BooleanField(required=False)
-    employee = serializers.CharField(min_length=4, max_length=25)
+    user = serializers.CharField(min_length=4, max_length=25)
 
     def validate_access_point(self, data):
         """Check that access point exists."""
@@ -120,14 +122,19 @@ class CreateAccessHourSerializer(serializers.Serializer):
         self.context['access_point'] = access_point
         return data
 
-    def validate_employee(self, data):
+    def validate_user(self, data):
         """Check that employee exists and belongs the company."""
         try:
-            employee = Employee.objects.get(
-                user=data, company=self.context['company'])
-        except Employee.DoesNotExist:
-            raise serializers.ValidationError('This user does not exists or is not a employee')
-        self.context['employee'] = employee
+            user = User.objects.get(username=data)
+        except User.DoesNotExist:
+            raise serializers.ValidationError('This user does not exists.')
+        
+        employee = Employee.objects.filter(
+            user=user, company=self.context['company'])
+
+        if employee.exists() != True:
+            raise serializers.ValidationError('This user is not an employee in this company.')
+        self.context['employee'] = user
         return data
 
     def validate(self, data):
@@ -139,13 +146,11 @@ class CreateAccessHourSerializer(serializers.Serializer):
 
     def create(self, data):
         """Create a access hour."""
-        company = self.context['company']
         access_point = self.context['access_point']
-        employee = self.context['employee']
-
+        user = self.context['employee']
         data.pop('access_point')
-        data.pop('employee')
+        data.pop('user')
 
         access_hour = AccessHour.objects.create(
-            **data, company=company, access_point=access_point, user=employee)
+            **data, access_point=access_point, user=user)
         return access_hour

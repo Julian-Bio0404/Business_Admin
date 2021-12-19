@@ -5,7 +5,7 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
 # Models
-from app.companies.models import Company, Employee
+from app.companies.models import Employee
 from app.users.models import User
 
 # Taskapp
@@ -29,7 +29,7 @@ class InviteEmployee(serializers.Serializer):
         return data['email']
 
 
-class EmployeeSerializer(serializers.ModelSerializer):
+class EmployeeModelSerializer(serializers.ModelSerializer):
     """Employee Model serializer."""
     
     user = serializers.StringRelatedField(read_only=True)
@@ -37,6 +37,6 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
     class Meta:
         """Meta options."""
-        model = User
+        model = Employee
         fields = ['user', 'joined_at']
         read_only_fields = ['user', 'joined_at']

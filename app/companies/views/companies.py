@@ -6,12 +6,13 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 # Models
-from app.companies.models import Company
+from app.companies.models import Company, Employee
 
 # Serializer
 from app.companies.serializers import (
     CompanyModelSerializer,
     CreateCompanySerializer,
+    EmployeeModelSerializer,
     InviteEmployee
 )
 from app.users.serializers import UserSignUpSerializer
@@ -62,4 +63,12 @@ class CompanyViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         employee_email = serializer.save()
         data = {'message': f'Successful sending of the invitation to the email {employee_email}.'}
+        return Response(data, status=status.HTTP_200_OK)
+
+    @action(detail=True)
+    def employees(self, request, *args, **kwargs):
+        """List employees of a company."""
+        company = self.get_object()
+        employees = Employee.objects.filter(company=company)
+        data = EmployeeModelSerializer(employees, many=True).data
         return Response(data, status=status.HTTP_200_OK)
