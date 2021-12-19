@@ -5,11 +5,9 @@ from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
-from app.companies import serializers
 
 # Models
 from app.companies.models import AccessPoint, Company
-from app.companies.models import access
 from app.companies.models.access import AccessHour
 
 # Serializers
@@ -20,6 +18,9 @@ from app.companies.serializers import (
     CreateAccessPointSerializer,
     VerifyAccessSerializer
 )
+
+# Tasks
+from taskapp.tasks.companies import admin_notification_email
 
 
 class AccessPointViewSet(viewsets.ModelViewSet):
@@ -63,6 +64,10 @@ class AccessPointViewSet(viewsets.ModelViewSet):
 
         serializer.is_valid(raise_exception=True)
         access = serializer.save()
+        if access == False:
+            admin_notification_email.delay(
+                admin_pk=self.company.admin.pk, user_pk=request.user.pk)
+        
         data['access'] = access
         return Response(data, status=status.HTTP_200_OK)
         
