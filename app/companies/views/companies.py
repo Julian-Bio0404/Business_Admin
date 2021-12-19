@@ -9,7 +9,11 @@ from rest_framework.response import Response
 from app.companies.models import Company
 
 # Serializer
-from app.companies.serializers import CompanyModelSerializer, CreateCompanySerializer
+from app.companies.serializers import (
+    CompanyModelSerializer,
+    CreateCompanySerializer,
+    InviteEmployee
+)
 from app.users.serializers import UserSignUpSerializer
 
 
@@ -49,3 +53,13 @@ class CompanyViewSet(viewsets.ModelViewSet):
             'message': 'An invitation has been sent to the user to be admin to the email you provided'
             }
         return Response(data, status=status.HTTP_201_CREATED)
+
+    @action(detail=True, methods=['post'])
+    def invite_employee(self, request, *args, **kwargs):
+        """Invite an employee to register in the application."""
+        company = self.get_object()
+        serializer = InviteEmployee(data=request.data, context={'company': company})
+        serializer.is_valid(raise_exception=True)
+        employee_email = serializer.save()
+        data = {'message': f'Successful sending of the invitation to the email {employee_email}.'}
+        return Response(data, status=status.HTTP_200_OK)

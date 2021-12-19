@@ -11,12 +11,12 @@ from app.users.models import User
 # Serializers
 from app.users.serializers import (
     AccountVerificationSerializer,
+    EmployeeSignUpSerializer,
     RestorePasswordSerializer,
     TokenRestorePasswordSerializer,
     UpdatePasswordSerializer,
     UserLoginSerializer,
-    UserModelSerializer,
-    UserSignUpSerializer
+    UserModelSerializer
 )
 
 
@@ -37,7 +37,7 @@ class UserViewSet(mixins.ListModelMixin,
     @action(detail=False, methods=['post'])
     def signup(self, request):
         """User sign up."""
-        serializer = UserSignUpSerializer(data=request.data)
+        serializer = EmployeeSignUpSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         data = UserModelSerializer(user).data

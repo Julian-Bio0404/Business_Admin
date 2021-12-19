@@ -14,6 +14,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.validators import UniqueValidator
 
 # Models
+from app.companies.models import Company, Employee
 from app.users.models import User
 
 # Taskapp
@@ -46,7 +47,7 @@ class UserModelSerializer(serializers.ModelSerializer):
 class UserSignUpSerializer(serializers.Serializer):
     """
     User signup serializer.
-    Handle sign up data validation and user & profile creation.
+    Handle sign up data validation and user creation.
     """
 
     email = serializers.EmailField(
@@ -82,9 +83,62 @@ class UserSignUpSerializer(serializers.Serializer):
         return data
 
     def create(self, data):
-        """Handle user and profile creation"""
+        """Handle user creation"""
         data.pop('password_confirmation')
         user = User.objects.create_user(**data)
+        send_confirmation_email.delay(user_pk=user.pk)
+        return user
+
+
+class EmployeeSignUpSerializer(UserSignUpSerializer):
+    """Employee SignUp serializer."""
+
+    token = serializers.CharField()
+
+    def validate_token(self, data):
+        """Verify token is valid."""
+        try:
+            payload = jwt.decode(
+                data, settings.SECRET_KEY, algorithms=['HS256'])
+        except jwt.ExpiredSignatureError:
+            raise serializers.ValidationError('Verification link has expired.')
+        except jwt.PyJWTError:
+            raise serializers.ValidationError('Invalid token')
+
+        if payload['type'] != 'register_invitation':
+            raise serializers.ValidationError('Invalid token')
+
+        try:
+            company = Company.objects.get(name=payload['company_name'])
+        except Company.DoesNotExist:
+            raise serializers.ValidationError('The company who invited you no longer exists')
+
+        self.context['company'] = company
+        self.context['payload'] = payload
+        return data
+
+    def validate(self, data):
+        """Verify password match and type identification."""
+        passwd = data['password']
+        passwd_conf = data['password_confirmation']
+        
+        if passwd != passwd_conf:
+            raise serializers.ValidationError("Password don't match")
+        password_validation.validate_password(passwd)
+        return data
+    
+    def create(self, data):
+        """Handle user creation"""
+        data.pop('password_confirmation')
+        data.pop('token')
+
+        # Create user
+        user = User.objects.create_user(**data)
+        user.company = self.context['company']
+        user.save()
+
+        # Create Employee
+        Employee.objects.create(user=user, company=self.context['company'])
         send_confirmation_email.delay(user_pk=user.pk)
         return user
 
