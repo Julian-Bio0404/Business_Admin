@@ -1,5 +1,8 @@
 """Access serializers."""
 
+# Utilities
+from datetime import datetime
+
 # Django REST Framework
 from django.core.validators import RegexValidator
 from rest_framework import serializers
@@ -154,3 +157,36 @@ class CreateAccessHourSerializer(serializers.Serializer):
         access_hour = AccessHour.objects.create(
             **data, access_point=access_point, user=user)
         return access_hour
+
+
+class VerifyAccessSerializer(serializers.Serializer):
+    """Verify Access serializer."""
+
+    # Geolocation validation
+    geo_regex = RegexValidator(
+        regex=r"^(-?\d+(\.\d+)?),*(-?\d+(\.\d+)?)$",
+        message='Geolocation must be entered in the format: lat,lon')
+
+    geolocation = serializers.CharField(
+        validators=[geo_regex], min_length=6, max_length=30)
+    
+    def validate(self, data):
+        """Verify access permission."""
+        access_point = self.context['access_point']
+        user = self.context['user']
+
+        now = datetime.now().time()
+        access_hour = AccessHour.objects.filter(
+            access_point=access_point,
+            access_point__geolocation=data['geolocation'],
+            user=user, active=True,
+            start__lte=now, finish__gt=now,
+            )
+
+        if access_hour.exists():
+            self.context['access'] = True
+        self.context['access'] = False
+        return data
+    
+    def save(self, **kwargs):
+        return self.context['access']

@@ -5,9 +5,11 @@ from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
+from app.companies import serializers
 
 # Models
 from app.companies.models import AccessPoint, Company
+from app.companies.models import access
 from app.companies.models.access import AccessHour
 
 # Serializers
@@ -15,7 +17,8 @@ from app.companies.serializers import (
     AccessHourModelSerializer,
     AccessPointModelSerializer,
     CreateAccessHourSerializer,
-    CreateAccessPointSerializer
+    CreateAccessPointSerializer,
+    VerifyAccessSerializer
 )
 
 
@@ -48,6 +51,21 @@ class AccessPointViewSet(viewsets.ModelViewSet):
         """Return access point of the company."""
         return AccessPoint.objects.filter(company=self.company)
 
+    @action(detail=True, methods=['post'])
+    def verify_access(self, request, *args, **kwargs):
+        """Verify access permission."""
+        access_point = self.get_object()
+        data = {'access_point': AccessPointModelSerializer(access_point).data}
+
+        serializer = VerifyAccessSerializer(
+            data=request.data,
+            context={'access_point': access_point, 'user': request.user})
+
+        serializer.is_valid(raise_exception=True)
+        access = serializer.save()
+        data['access'] = access
+        return Response(data, status=status.HTTP_200_OK)
+        
 
 class AccessHourViewSet(viewsets.ModelViewSet):
     """
