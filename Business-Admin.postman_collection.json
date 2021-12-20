@@ -1,0 +1,2529 @@
+{
+	"info": {
+		"_postman_id": "32435fa5-dffa-456c-a5d2-b83a3680a1e5",
+		"name": "Business-Admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Sign-up-Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDAxMzgxNDYsInR5cGUiOiJyZWdpc3Rlcl9pbnZpdGF0aW9uIiwiY29tcGFueV9uYW1lIjoiUGxhdHppIn0.IupxYKKtLZiPZYUuzwa_GztYijhPn7sMMI0OskHqi9I\",\r\n    \"email\": \"test03@gmail.com\",\r\n    \"username\": \"test03\",\r\n    \"first_name\": \"Test03\",\r\n    \"last_name\": \"Test03\",\r\n    \"phone_number\": \"+57 9999999999\",\r\n    \"password\": \"prueba123\",\r\n    \"password_confirmation\": \"prueba123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/signup/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"signup",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign-up-Employee",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDAxMzgxNDYsInR5cGUiOiJyZWdpc3Rlcl9pbnZpdGF0aW9uIiwiY29tcGFueV9uYW1lIjoiUGxhdHppIn0.IupxYKKtLZiPZYUuzwa_GztYijhPn7sMMI0OskHqi9I\",\r\n    \"email\": \"test03@gmail.com\",\r\n    \"username\": \"test03\",\r\n    \"first_name\": \"Test03\",\r\n    \"last_name\": \"Test03\",\r\n    \"phone_number\": \"+57 9999999999\",\r\n    \"password\": \"prueba123\",\r\n    \"password_confirmation\": \"prueba123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/signup/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"signup",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 20 Dec 2021 02:02:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"username\": \"test03\",\n    \"first_name\": \"Test03\",\n    \"last_name\": \"Test03\",\n    \"email\": \"test03@gmail.com\",\n    \"phone_number\": \"+57 9999999999\",\n    \"verified\": false,\n    \"company\": \"Platzi\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify-account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidGVzdDAzIiwiZXhwIjoxNjQwMTM4NTQ2LCJ0eXBlIjoiZW1haWxfY29uZmlybWF0aW9uIn0.TeUOALCQuJwBWjJPsgZOwKQonpGvFmnMAxfW-OXYBHU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/verify/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"verify",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Verify-account",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidGVzdDAyIiwiZXhwIjoxNjQwMTM2MjE1LCJ0eXBlIjoiZW1haWxfY29uZmlybWF0aW9uIn0.7JRZV0OzdAmPuGhM-PGuRhIllAitlEIfKHu_cNV9iGA\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/verify/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"verify",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 20 Dec 2021 01:33:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "83"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Congratulations, now you can login and update some data and password.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"prueba123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/login/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/login/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 20 Dec 2021 01:08:27 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "209"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"username\": \"superadmin01\",\n        \"first_name\": \"Super\",\n        \"last_name\": \"User\",\n        \"email\": \"admin@gmail.com\",\n        \"phone_number\": \"\",\n        \"verified\": true,\n        \"company\": null\n    },\n    \"access_token\": \"6dd42f028db38f35344e08296e07f1d2eccdb879\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Token-restore-psswd",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/token_restore_psswd/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"token_restore_psswd",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Token-restore-psswd",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"test@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/token_restore_psswd/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"token_restore_psswd",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 20 Dec 2021 05:39:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"We have sent an email for you to reset your password.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Restore-Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"prueba1234\",\r\n    \"password_confirmation\": \"prueba1234\",\r\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidGVzdDAyIiwiZXhwIjoxNjQwMTUxNTcwLCJ0eXBlIjoicmVzdG9yZV9wYXNzd29yZCJ9.YmV_aP9-7tOKxIa6uXUGzxTHTZDd_zCUNUrSupReJtE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/restore_psswd/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"restore_psswd",
+								""
+							]
+						},
+						"description": "**descripción**\nEnvío de token al correo del usuario para recuperar contraseña\n\n**request-body**\n- `email (string)`: email de usuario. Debe ser el email de un usuario inscrito *"
+					},
+					"response": [
+						{
+							"name": "Restore-Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"prueba1234\",\r\n    \"password_confirmation\": \"prueba1234\",\r\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiU29maWFndGEiLCJleHAiOjE2MzYwNjAyODksInR5cGUiOiJyZXN0b3JlX3Bhc3N3b3JkIn0.qGyzX-sXa7xpHNXQ5b02skal_HfkMxPmcZ985raMGgg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/restore_psswd/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"restore_psswd",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 02 Nov 2021 21:22:18 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.7"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Your password has been reset.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update-password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"old_password\": \"prueba123\",\r\n    \"password\": \"prueba1234\",\r\n    \"password_confirmation\": \"prueba1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/test02/update_psswd/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"test02",
+								"update_psswd",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update-password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"old_password\": \"prueba123\",\r\n    \"password\": \"prueba1234\",\r\n    \"password_confirmation\": \"prueba1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/test02/update_psswd/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"test02",
+										"update_psswd",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 20 Dec 2021 05:36:08 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "PUT, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Your password has been updated.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "Company",
+					"item": [
+						{
+							"name": "Create-company",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nit\": \"249735569123\",\r\n    \"name\": \"Platzi\",\r\n    \"commercial_name\": \"Platzi\",\r\n    \"phone_number\": \"+57 3347658998\",\r\n    \"web_site\": \"https://www.platzi.com/\",\r\n    \"email\": \"team@platzi.com\",\r\n    \"direction\": \"Cll 103 #45-29\",\r\n    \"country\": \"Colombia\",\r\n    \"state\": \"Cundinamarca\",\r\n    \"city\": \"Bogotá\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create-company",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"nit\": \"9345652567\",\r\n    \"name\": \"NeivaPan\",\r\n    \"commercial_name\": \"NeivaPan\",\r\n    \"phone_number\": \"+57 3198435873\",\r\n    \"web_site\": \"https://www.neivapan.com/\",\r\n    \"email\": \"neivapan@gmail.com\",\r\n    \"direction\": \"Kra 3 #103-29\",\r\n    \"country\": \"Colombia\",\r\n    \"state\": \"Huila\",\r\n    \"city\": \"Neiva\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 01:10:05 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "247"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"nit\": \"9345652567\",\n    \"name\": \"NeivaPan\",\n    \"commercial_name\": \"NeivaPan\",\n    \"phone_number\": \"+57 3198435873\",\n    \"web_site\": \"https://www.neivapan.com/\",\n    \"email\": \"neivapan@gmail.com\",\n    \"direction\": \"Kra 3 #103-29\",\n    \"country\": \"Colombia\",\n    \"state\": \"Huila\",\n    \"city\": \"Neiva\"\n}"
+								}
+							]
+						},
+						{
+							"name": "List-Companies",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List-Companies",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 01:17:17 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "576"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"count\": 2,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"nit\": \"249735569123\",\n            \"name\": \"Platzi\",\n            \"commercial_name\": \"Platzi\",\n            \"admin\": null,\n            \"web_site\": \"https://www.platzi.com/\",\n            \"email\": \"team@platzi.com\",\n            \"phone_number\": \"+57 3347658998\",\n            \"direction\": \"Cll 103 #45-29\",\n            \"country\": \"Colombia\",\n            \"state\": \"Cundinamarca\",\n            \"city\": \"Bogotá\"\n        },\n        {\n            \"nit\": \"9345652567\",\n            \"name\": \"NeivaPan\",\n            \"commercial_name\": \"NeivaPan\",\n            \"admin\": null,\n            \"web_site\": \"https://www.neivapan.com/\",\n            \"email\": \"neivapan@gmail.com\",\n            \"phone_number\": \"+57 3198435873\",\n            \"direction\": \"Kra 3 #103-29\",\n            \"country\": \"Colombia\",\n            \"state\": \"Huila\",\n            \"city\": \"Neiva\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Detail-Company",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/NeivaPan/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"NeivaPan",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Detail-Company",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/NeivaPan/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"NeivaPan",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 01:18:03 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "260"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"nit\": \"9345652567\",\n    \"name\": \"NeivaPan\",\n    \"commercial_name\": \"NeivaPan\",\n    \"admin\": null,\n    \"web_site\": \"https://www.neivapan.com/\",\n    \"email\": \"neivapan@gmail.com\",\n    \"phone_number\": \"+57 3198435873\",\n    \"direction\": \"Kra 3 #103-29\",\n    \"country\": \"Colombia\",\n    \"state\": \"Huila\",\n    \"city\": \"Neiva\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Invite-Company-admin",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"test@gmail.com\",\r\n    \"username\": \"test02\",\r\n    \"first_name\": \"Test02\",\r\n    \"last_name\": \"Test02\",\r\n    \"password\": \"prueba123\",\r\n    \"password_confirmation\": \"prueba123\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/create_admin/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"create_admin",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invite-Company-admin",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"test@gmail.com\",\r\n    \"username\": \"test02\",\r\n    \"first_name\": \"Test02\",\r\n    \"last_name\": \"Test02\",\r\n    \"password\": \"prueba123\",\r\n    \"password_confirmation\": \"prueba123\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/create_admin/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"create_admin",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 01:23:35 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "376"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"company\": {\n        \"nit\": \"249735569123\",\n        \"name\": \"Platzi\",\n        \"commercial_name\": \"Platzi\",\n        \"admin\": \"Test02 Test02\",\n        \"web_site\": \"https://www.platzi.com/\",\n        \"email\": \"team@platzi.com\",\n        \"phone_number\": \"+57 3347658998\",\n        \"direction\": \"Cll 103 #45-29\",\n        \"country\": \"Colombia\",\n        \"state\": \"Cundinamarca\",\n        \"city\": \"Bogotá\"\n    },\n    \"message\": \"An invitation has been sent to the user to be admin to the email you provided\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update-Company",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone_number\": \"+57 3198435877\",\r\n    \"country\": \"Mexico\",\r\n    \"state\": \"Ciudad de Mexico\",\r\n    \"city\": \"Ciudad de Mexico\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update-Company",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"phone_number\": \"+57 3198435877\",\r\n    \"country\": \"Mexico\",\r\n    \"state\": \"Ciudad de Mexico\",\r\n    \"city\": \"Ciudad de Mexico\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 01:48:58 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "285"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"nit\": \"249735569123\",\n    \"name\": \"Platzi\",\n    \"commercial_name\": \"Platzi\",\n    \"admin\": \"Test02 Test02\",\n    \"web_site\": \"https://www.platzi.com/\",\n    \"email\": \"team@platzi.com\",\n    \"phone_number\": \"+57 3198435877\",\n    \"direction\": \"Cll 103 #45-29\",\n    \"country\": \"Mexico\",\n    \"state\": \"Ciudad de Mexico\",\n    \"city\": \"Ciudad de Mexico\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Invite-Company-employee",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"test03@gmail.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/invite_employee/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"invite_employee",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invite-Company-employee",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"test03@gmail.com\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/invite_employee/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"invite_employee",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 01:55:46 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "81"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Successful sending of the invitation to the email test03@gmail.com.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "List-Company-Employees",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/employees/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"employees",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List-Company-Employees",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/employees/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"employees",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 02:06:50 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "73"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"user\": \"Test03 Test03\",\n        \"joined_at\": \"2021-12-19T21:02:26.816270-05:00\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Delete-Company",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Google/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Google",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Access-Point",
+					"item": [
+						{
+							"name": "Create-Company-AccessPoint Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Platzi-Chile\",\r\n    \"email\": \"teamargentina@platzi.com\",\r\n    \"geolocation\": \"-34.44076,-58.70521\",\r\n    \"direction\": \"Kra24 #19-28\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/access_points/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"access_points",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create-Company-AccessPoint Copy",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Platzi-Bogotá\",\r\n    \"email\": \"teambogota@platzi.com\",\r\n    \"geolocation\": \"44.50155,11.33989\",\r\n    \"direction\": \"Cll34 #45-32\",\r\n    \"active\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/access_points/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"access_points",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 02:36:12 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "132"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"Platzi-Bogotá\",\n    \"email\": \"teambogota@platzi.com\",\n    \"geolocation\": \"44.50155,11.33989\",\n    \"direction\": \"Cll34 #45-32\",\n    \"active\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "List-Company-AccessPoint",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/access_points/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"access_points",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List-Company-AccessPoint",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/access_points/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"access_points",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 03:02:16 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "523"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"count\": 2,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"name\": \"Platzi-Chile\",\n            \"company\": \"Platzi\",\n            \"geolocation\": \"-34.44076,-58.70521\",\n            \"active\": true,\n            \"email\": \"teamargentina@platzi.com\",\n            \"phone_number\": \"\",\n            \"direction\": \"Kra24 #19-28\",\n            \"country\": \"Argentina\",\n            \"state\": \"Buenos Aires\",\n            \"city\": \"El Triángulo\"\n        },\n        {\n            \"name\": \"Platzi-Bogotá\",\n            \"company\": \"Platzi\",\n            \"geolocation\": \"44.50155,11.33989\",\n            \"active\": true,\n            \"email\": \"teambogota@platzi.com\",\n            \"phone_number\": \"\",\n            \"direction\": \"Cll34 #45-32\",\n            \"country\": \"Italia\",\n            \"state\": \"Emilia-Romagna\",\n            \"city\": \"Bologna\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Detail-Company-AccessPoint",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/access_points/1/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"access_points",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Detail-Company-AccessPoint",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/access_points/1/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"access_points",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 03:03:25 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "230"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"Platzi-Bogotá\",\n    \"company\": \"Platzi\",\n    \"geolocation\": \"44.50155,11.33989\",\n    \"active\": true,\n    \"email\": \"teambogota@platzi.com\",\n    \"phone_number\": \"\",\n    \"direction\": \"Cll34 #45-32\",\n    \"country\": \"Italia\",\n    \"state\": \"Emilia-Romagna\",\n    \"city\": \"Bologna\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update-Company-AccessPoint Copy",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"geolocation\": \"4.6533326,-74.083652\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/access_points/1/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"access_points",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update-Company-AccessPoint Copy",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"geolocation\": \"4.6533326,-74.083652\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/access_points/1/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"access_points",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 03:14:01 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "233"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"Platzi-Bogotá\",\n    \"company\": \"Platzi\",\n    \"geolocation\": \"4.6533326,-74.083652\",\n    \"active\": true,\n    \"email\": \"teambogota@platzi.com\",\n    \"phone_number\": \"\",\n    \"direction\": \"Cll34 #45-32\",\n    \"country\": \"Italia\",\n    \"state\": \"Emilia-Romagna\",\n    \"city\": \"Bologna\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Verify-Access",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"geolocation\": \"-34.44076,-58.70521\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/access_points/2/verify_access/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"access_points",
+										"2",
+										"verify_access",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Verify-Access-Denied",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"geolocation\": \"-34.44076,-58.70521\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/access_points/1/verify_access/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"access_points",
+												"1",
+												"verify_access",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 04:33:26 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "265"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"access_point\": {\n        \"name\": \"Platzi-Bogotá\",\n        \"company\": \"Platzi\",\n        \"geolocation\": \"4.6533326,-74.083652\",\n        \"active\": true,\n        \"email\": \"teambogota@platzi.com\",\n        \"phone_number\": \"\",\n        \"direction\": \"Cll34 #45-32\",\n        \"country\": \"Italia\",\n        \"state\": \"Emilia-Romagna\",\n        \"city\": \"Bologna\"\n    },\n    \"access\": false\n}"
+								},
+								{
+									"name": "Verify-Access-Permitted",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"geolocation\": \"-34.44076,-58.70521\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/access_points/2/verify_access/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"access_points",
+												"2",
+												"verify_access",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 05:09:17 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "271"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"access_point\": {\n        \"name\": \"Platzi-Chile\",\n        \"company\": \"Platzi\",\n        \"geolocation\": \"-34.44076,-58.70521\",\n        \"active\": true,\n        \"email\": \"teamargentina@platzi.com\",\n        \"phone_number\": \"\",\n        \"direction\": \"Kra24 #19-28\",\n        \"country\": \"Argentina\",\n        \"state\": \"Buenos Aires\",\n        \"city\": \"El Triángulo\"\n    },\n    \"access\": true\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Access-Hour",
+					"item": [
+						{
+							"name": "Create-Company-AccessHour",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"access_point\": \"Platzi-Chile\",\r\n    \"start\": \"00:00\",\r\n    \"finish\": \"02:00\",\r\n    \"active\": true,\r\n    \"user\": \"test03\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/access_hour/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"access_hour",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create-Company-AccessHour",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"access_point\": \"Platzi-Chile\",\r\n    \"start\": \"14:00\",\r\n    \"finish\": \"17:00\",\r\n    \"active\": true,\r\n    \"user\": \"test03\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/access_hour/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"access_hour",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 03:41:06 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "114"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"access_point\": \"Platzi:Platzi-Chile\",\n    \"start\": \"14:00:00\",\n    \"finish\": \"17:00:00\",\n    \"active\": true,\n    \"user\": \"Test03 Test03\"\n}"
+								}
+							]
+						},
+						{
+							"name": "List-Company-AccessHour Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/access_hour/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"access_hour",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "List-Company-AccessHour Copy",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/access_hour/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"access_hour",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 04:16:03 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "166"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"count\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"access_point\": \"Platzi:Platzi-Chile\",\n            \"start\": \"14:00:00\",\n            \"finish\": \"17:00:00\",\n            \"user\": \"Test03 Test03\",\n            \"active\": true\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Active-Desactive-AccessHour",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{access_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/companies/Platzi/access_hour/1/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"companies",
+										"Platzi",
+										"access_hour",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Desactive-AccessHour",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"active\": false\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/access_hour/1/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"access_hour",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 03:53:08 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "115"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"access_point\": \"Platzi:Platzi-Chile\",\n    \"start\": \"14:00:00\",\n    \"finish\": \"17:00:00\",\n    \"user\": \"Test03 Test03\",\n    \"active\": false\n}"
+								},
+								{
+									"name": "Active-AccessHour",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token {{access_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"active\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/companies/Platzi/access_hour/1/",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"companies",
+												"Platzi",
+												"access_hour",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 20 Dec 2021 03:54:24 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.9"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "114"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"access_point\": \"Platzi:Platzi-Chile\",\n    \"start\": \"14:00:00\",\n    \"finish\": \"17:00:00\",\n    \"user\": \"Test03 Test03\",\n    \"active\": true\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

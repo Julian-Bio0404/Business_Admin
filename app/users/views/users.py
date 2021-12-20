@@ -8,6 +8,10 @@ from rest_framework.response import Response
 # Models
 from app.users.models import User
 
+# Permissions
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from app.users.permissions import IsAccountOwner
+
 # Serializers
 from app.users.serializers import (
     AccountVerificationSerializer,
@@ -33,6 +37,19 @@ class UserViewSet(mixins.ListModelMixin,
     queryset = User.objects.filter(verified=True)
     serializer_class = UserModelSerializer
     lookup_field = 'username'
+
+    def get_permissions(self):
+        """Assign permissions based on action."""
+        if self.action in [
+                'signup', 'login', 'verify',
+                'token_restore_psswd', 'restore_psswd']:
+            permissions = [AllowAny]
+        elif self.action in [
+                'retrieve', 'update', 'partial_update', 'update_psswd']:
+            permissions = [IsAuthenticated, IsAccountOwner]
+        else:
+            permissions = [IsAuthenticated]
+        return [p() for p in permissions]
 
     @action(detail=False, methods=['post'])
     def signup(self, request):

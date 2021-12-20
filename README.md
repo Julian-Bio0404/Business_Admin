@@ -27,6 +27,11 @@ docker-compose run --rm django python manage.py createsuperuser
 docker-compose run --rm django python manage.py verifysuperusers
 ```
 
+## Api Docs
+En el apartado de Features hay una breve descripción de las funcionalidades de la api, pero para tener ejemplo y saber exactamente como comunicarse con ella, puede:
+- Importar el archivo Business-Admin.postman_collection.json a su cuenta de postman
+- O visitar: https://documenter.getpostman.com/view/15752557/UVRAK7RF
+
 ## Features
 - Login: con email y password, al momento de hacer login, se creará un token de acceso
 - Crear una compañía: sólo el superusuario podrá crearlas
@@ -43,4 +48,7 @@ El envío se realiza asíncornamente con celery y redis. (Email-Backend: En cons
 - Actualizar un punto de acceso: sólo el admin de la empresa podrá hacerlo
 - Crear, activar, desactivar o eliminar una franja horaria de acceso al punto de acceso: sólo el admin del empresa, podrá hacerlo
 - Listar horas de acceso a un punto de acceso: sólo el admin y los empleados podrán hacerlo. Los empleados sólo podrán listar las horas de acceso a los que fueron asignados
-
+- Verificar acceso a un punto de acceso: sólo los empleados de la empresa a la que pertenece el punto dde acceso, prodán verificar su acceso, si es empleado y no tiene horas de acceso, según la hora actual y su punto de geolocalización, retornará False, de lo contrario, retornará True
+- Cada vez que un usuario verifica su acceso y este retorna False, se envía una notificación asincronamente al correo del admin de la empresa.
+- Actualizar contraseña de usuario
+- Recuperar contraseña de usuario
