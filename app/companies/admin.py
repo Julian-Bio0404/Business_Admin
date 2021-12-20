@@ -46,7 +46,8 @@ class AccessHourAdmin(admin.ModelAdmin):
     list_display =[
         'pk', 'access_point',
         'start', 'finish',
-        'user', 'created', 'updated'
+        'user', 'active', 
+        'created', 'updated'
     ]
 
 

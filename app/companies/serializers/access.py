@@ -181,11 +181,12 @@ class VerifyAccessSerializer(serializers.Serializer):
             access_point__geolocation=data['geolocation'],
             user=user, active=True,
             start__lte=now, finish__gt=now,
-            )
+        )
 
         if access_hour.exists():
             self.context['access'] = True
-        self.context['access'] = False
+        else:
+            self.context['access'] = False
         return data
     
     def save(self, **kwargs):

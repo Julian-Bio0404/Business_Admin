@@ -10,6 +10,10 @@ from rest_framework.response import Response
 from app.companies.models import AccessPoint, Company
 from app.companies.models.access import AccessHour
 
+# Permissions
+from app.companies.permissions import IsAdminPoint, IsCompanyEmployee, IsEmployeeHour, IsAdminOrEmployee
+from rest_framework.permissions import IsAuthenticated
+
 # Serializers
 from app.companies.serializers import (
     AccessHourModelSerializer,
@@ -29,6 +33,16 @@ class AccessPointViewSet(viewsets.ModelViewSet):
     Handle the creation, updating, obtaining,
     listing and deletion of companies.
     """
+
+    def get_permissions(self):
+        """Assign permissions based on action."""
+        if self.action in ['create', 'update', 'partial_update', 'destroy']:
+            permissions = [IsAuthenticated, IsAdminPoint]
+        elif self.action in ['verify_access']:
+            permissions = [IsAuthenticated, IsCompanyEmployee]
+        else:
+            permissions = [IsAuthenticated]
+        return [p() for p in permissions]
 
     def dispatch(self, request, *args, **kwargs):
         """Verify that the company exists."""
@@ -77,6 +91,16 @@ class AccessHourViewSet(viewsets.ModelViewSet):
     Access Hour viewset.
     Handle access permissions to access points.
     """
+    def get_permissions(self):
+        """Assign permissions based on action."""
+        if self.action in [
+            'create', 'update', 'partial_update', 'destroy']:
+            permissions = [IsAuthenticated, IsAdminPoint]
+        elif self.action in ['list']:
+            permissions = [IsAuthenticated, IsAdminOrEmployee]
+        else:
+            permissions = [IsAuthenticated, IsEmployeeHour]
+        return [p() for p in permissions]
 
     def dispatch(self, request, *args, **kwargs):
         """Verify that the company exists."""
@@ -98,4 +122,7 @@ class AccessHourViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """Return access hours of the company."""
+        if self.request.user != self.company.admin:
+            return AccessHour.objects.filter(
+                access_point__company=self.company, user=self.request.user) 
         return AccessHour.objects.filter(access_point__company=self.company)

@@ -8,6 +8,10 @@ from rest_framework.response import Response
 # Models
 from app.companies.models import Company, Employee
 
+# Permissions
+from app.companies.permissions import IsSuperUser, IsCompanyAdmin
+from rest_framework.permissions import IsAuthenticated
+
 # Serializer
 from app.companies.serializers import (
     CompanyModelSerializer,
@@ -27,6 +31,17 @@ class CompanyViewSet(viewsets.ModelViewSet):
 
     queryset = Company.objects.all()
     lookup_field = 'name'
+
+    def get_permissions(self):
+        """Assign permissions based on action."""
+        if self.action in ['create', 'create_admin']:
+            permissions = [IsSuperUser]
+        elif self.action in [
+            'update', 'partial_update', 'destroy', 'invite_employee']:
+            permissions = [IsCompanyAdmin]
+        else:
+            permissions = [IsAuthenticated]
+        return [p() for p in permissions]
 
     def get_serializer_class(self):
         """Return serializer based on action."""
